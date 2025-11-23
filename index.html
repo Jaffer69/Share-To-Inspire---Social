@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareToInspire | Connect & Achieve</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auth View -->
+    <div id="auth-view" class="view active">
+        <header class="auth-header">
+            <div class="container">
+                <div class="logo-container">
+                    <i class="fas fa-trophy logo-icon"></i>
+                    <h1 class="logo">ShareToInspire</h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="auth-main">
+            <div class="auth-wrapper">
+                <div class="auth-hero">
+                    <img src="./assets/login-page.png" alt="Welcome to ShareToInspire" class="hero-image">
+                    <div class="hero-overlay">
+                        <h2>Share Your Journey 🌟</h2>
+                        <p>Connect, inspire, and celebrate achievements together! 🎉</p>
+                    </div>
+                </div>
+
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button class="tab-btn active" data-tab="login">Login</button>
+                        <button class="tab-btn" data-tab="signup">Sign Up</button>
+                    </div>
+
+                    <form id="login-form" class="auth-form active">
+                        <div class="input-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="login-email" placeholder="Email" required>
+                            <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="login-password" placeholder="Password" required>
+                            <div class="error-message" id="login-password-error">Password must be at least 8 characters</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i> Log In
+                        </button>
+                    </form>
+
+                    <form id="signup-form" class="auth-form">
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="signup-name" placeholder="Full Name" required>
+                            <div class="error-message" id="signup-name-error">Please enter your name</div>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="signup-email" placeholder="Email" required>
+                            <div class="error-message" id="signup-email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <div class="error-message" id="signup-password-error">Password must be at least 8 characters with letters and numbers</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Feed View -->
+    <div id="feed-view" class="view">
+        <header class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-brand">
+                        <i class="fas fa-trophy brand-icon"></i>
+                        <h1 class="brand-text">Share Your Achievements! 🏆</h1>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
+                            <label for="theme-toggle" class="toggle-label">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                            </label>
+                        </div>
+                        
+                        <div class="user-menu">
+                            <span class="welcome-text" id="welcome-user">Welcome, Student!</span>
+                            <button id="logout-btn" class="btn btn-outline">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <!-- Create Post Section -->
+                <section class="create-post-section card">
+                    <h2 class="section-title">Share Your Achievement! ✨</h2>
+                    <form id="create-post-form" class="post-form">
+                        <div class="post-input-container">
+                            <textarea id="post-content" placeholder="What amazing thing did you accomplish today? 🎯" rows="4"></textarea>
+                            <div class="emoji-palette">
+                                <span class="emoji" data-emoji="😊">😊</span>
+                                <span class="emoji" data-emoji="🎉">🎉</span>
+                                <span class="emoji" data-emoji="🏆">🏆</span>
+                                <span class="emoji" data-emoji="🚀">🚀</span>
+                                <span class="emoji" data-emoji="💡">💡</span>
+                                <span class="emoji" data-emoji="🌟">🌟</span>
+                                <span class="emoji" data-emoji="🔥">🔥</span>
+                                <span class="emoji" data-emoji="📚">📚</span>
+                            </div>
+                        </div>
+                        
+                        <div class="media-upload">
+                            <input type="url" id="image-url" placeholder="Paste image URL... 🌄" class="url-input">
+                            <div class="upload-actions">
+                                <label for="image-upload" class="btn btn-outline upload-btn">
+                                    <i class="fas fa-cloud-upload-alt"></i> Upload Image
+                                </label>
+                                <input type="file" id="image-upload" accept="image/*" hidden>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Post Achievement
+                                </button>
+                            </div>
+                            <div id="image-preview" class="image-preview"></div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Feed Controls -->
+                <section class="feed-controls card">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-posts" placeholder="Search achievements... 🔍" class="search-input">
+                    </div>
+                    
+                    <div class="filter-container">
+                        <select id="sort-posts" class="filter-select">
+                            <option value="latest">📅 Latest First</option>
+                            <option value="oldest">🕰️ Oldest First</option>
+                            <option value="likes">❤️ Most Liked</option>
+                        </select>
+                        <button id="clear-filters" class="btn btn-outline">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Posts Feed -->
+                <section id="posts-container" class="posts-feed">
+                    <!-- Posts will be dynamically inserted here -->
+                </section>
+            </div>
+        </main>
+
+        <!-- Edit Post Modal -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <h3 class="modal-title">Edit Your Achievement ✏️</h3>
+                <form id="edit-post-form" class="modal-form">
+                    <input type="hidden" id="edit-post-id">
+                    <textarea id="edit-post-content" placeholder="Update your achievement..." rows="4"></textarea>
+                    <input type="url" id="edit-image-url" placeholder="New image URL...">
+                    <div class="modal-actions">
+                        <button type="button" id="cancel-edit" class="btn btn-outline">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Comments Modal -->
+        <div id="comments-modal" class="modal">
+            <div class="modal-content wide">
+                <div class="comments-header">
+                    <h3 class="modal-title">Comments 💬</h3>
+                    <span class="comments-count" id="comments-count">0</span>
+                </div>
+                
+                <div class="post-preview" id="post-preview"></div>
+                
+                <form id="add-comment-form" class="comment-form">
+                    <input type="hidden" id="comment-post-id">
+                    <div class="comment-input-container">
+                        <textarea id="comment-text" placeholder="Share your thoughts... 💭" rows="2"></textarea>
+                        <button type="submit" class="btn btn-primary comment-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="comments-list" class="comments-list"></div>
+            </div>
+        </div>
+
+        <!-- Logout Confirmation Modal -->
+        <div id="logout-modal" class="modal">
+            <div class="modal-content small">
+                <div class="logout-confirm">
+                    <i class="fas fa-sign-out-alt logout-icon"></i>
+                    <h3>Ready to leave? 👋</h3>
+                    <p>Are you sure you want to logout?</p>
+                    <div class="modal-actions">
+                        <button id="confirm-logout" class="btn btn-danger">Yes, Logout</button>
+                        <button id="cancel-logout" class="btn btn-outline">Stay Connected</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Footer -->
+        <footer class="app-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <button id="scroll-to-top" class="btn btn-outline footer-btn">
+                            <i class="fas fa-arrow-up"></i> Top
+                        </button>
+                        <button id="create-post-footer" class="btn btn-primary footer-btn">
+                            <i class="fas fa-plus"></i> New Post
+                        </button>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <div class="current-time" id="current-time"></div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <div class="theme-toggle footer-theme">
+                            <input type="checkbox" id="footer-theme-toggle" class="toggle-checkbox">
+                            <label for="footer-theme-toggle" class="toggle-label">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
